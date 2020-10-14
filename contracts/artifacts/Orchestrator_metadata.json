@@ -1,0 +1,408 @@
+{
+	"compiler": {
+		"version": "0.4.24+commit.e67f0147"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "policy",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "inRebaseWindow",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "destination",
+						"type": "address"
+					},
+					{
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "addTransaction",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "removeTransaction",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"name": "enabled",
+						"type": "bool"
+					}
+				],
+				"name": "setTransactionEnabled",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "isOwner",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "transactionsSize",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "transactions",
+				"outputs": [
+					{
+						"name": "enabled",
+						"type": "bool"
+					},
+					{
+						"name": "destination",
+						"type": "address"
+					},
+					{
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "rebase",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "sender",
+						"type": "address"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"name": "policy_",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "destination",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "TransactionFailed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "epoch",
+						"type": "uint256"
+					}
+				],
+				"name": "LogTestCall",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "previousOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipRenounced",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			}
+		],
+		"devdoc": {
+			"methods": {
+				"addTransaction(address,bytes)": {
+					"params": {
+						"data": "Transaction data payload",
+						"destination": "Address of contract destination"
+					}
+				},
+				"initialize(address)": {
+					"details": "The Ownable constructor sets the original `owner` of the contract to the sender account."
+				},
+				"isOwner()": {
+					"return": "true if `msg.sender` is the owner of the contract."
+				},
+				"owner()": {
+					"return": "the address of the owner."
+				},
+				"removeTransaction(uint256)": {
+					"params": {
+						"index": "Index of transaction to remove.             Transaction ordering may have changed since adding."
+					}
+				},
+				"renounceOwnership()": {
+					"details": "Allows the current owner to relinquish control of the contract."
+				},
+				"setTransactionEnabled(uint256,bool)": {
+					"params": {
+						"enabled": "True for enabled, false for disabled.",
+						"index": "Index of transaction. Transaction ordering may have changed since adding."
+					}
+				},
+				"transactionsSize()": {
+					"return": "Number of transactions, both enabled and disabled, in transactions list."
+				},
+				"transferOwnership(address)": {
+					"details": "Allows the current owner to transfer control of the contract to a newOwner.",
+					"params": {
+						"newOwner": "The address to transfer ownership to."
+					}
+				}
+			},
+			"title": "Orchestrator"
+		},
+		"userdoc": {
+			"methods": {
+				"addTransaction(address,bytes)": {
+					"notice": "Adds a transaction that gets called for a downstream receiver of rebases"
+				},
+				"rebase()": {
+					"notice": "Main entry point to initiate a rebase operation.        The Orchestrator calls rebase on the policy and notifies downstream applications.        Contracts are guarded from calling, to avoid flash loan attacks on liquidity        providers.        If a transaction in the transaction list reverts, it is swallowed and the remaining        transactions are executed."
+				},
+				"renounceOwnership()": {
+					"notice": "Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore."
+				}
+			}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"localhost/contracts/Orchestrator.sol": "Orchestrator"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"localhost/contracts/Orchestrator.sol": {
+			"keccak256": "0xf9c3c23d0c712594eb5363be46cf7761fb5a81182b8c584b75bedccfe88c6638",
+			"urls": [
+				"bzzr://6828957b32872274c42a3669bd42a4853fff27dcb21208208a66d003f321fba3"
+			]
+		},
+		"localhost/contracts/UFragments.sol": {
+			"keccak256": "0xa8d2773064ea6b34ef55b9b733dea85eca0ecaf8a7ccfc8db5a073d1c7d9cb13",
+			"urls": [
+				"bzzr://1c84f35930ebb5ee3551e661fc409c43ae8b38dd0a2eed9385d47dcf711adfbc"
+			]
+		},
+		"localhost/contracts/UFragmentsPolicy.sol": {
+			"keccak256": "0xf33c81cc234bb71cb6e73884d8d8afab4d26f5dfad3399789901403c6bda4854",
+			"urls": [
+				"bzzr://99706d5e09e2319aacf9487a24bf5f52ea7c1424c2e9266d2ed8e76f61ac5e34"
+			]
+		},
+		"localhost/contracts/lib/SafeMathInt.sol": {
+			"keccak256": "0xefed5c4a0229c973a6168fdd5eb2b51d76072262b9743a78342098bedf98e1e1",
+			"urls": [
+				"bzzr://8f99fe607f80c0792ca5c2d2df045649868f826751184bb25990b9bbdf9d03fd"
+			]
+		},
+		"localhost/contracts/lib/UInt256Lib.sol": {
+			"keccak256": "0x80aeb79ffdedb45f07490869a5bdac6c2b9af8f500a570862891f8f0ab4934a4",
+			"urls": [
+				"bzzr://643e682b5d2e63601f41efd8672447d0fa876cd8742c59711761ecbaaa9414c2"
+			]
+		},
+		"openzeppelin-eth/contracts/math/SafeMath.sol": {
+			"keccak256": "0xca27427124232a675642ba45303b78d5a36e1207ee222030ef249e11eba5a224",
+			"urls": [
+				"bzzr://013c67962737acca577ecd24e6b6c80f85b05fd03c1c75ab68f65a084f4b4cfd"
+			]
+		},
+		"openzeppelin-eth/contracts/ownership/Ownable.sol": {
+			"keccak256": "0x1c591a78d1b95b5f22f6769116eeedb627334475ae005a6c8228598981f74989",
+			"urls": [
+				"bzzr://4b76436911177bd8b9ba061d626731bb90f61c6be482fe94d2b96e8be169cd83"
+			]
+		},
+		"openzeppelin-eth/contracts/token/ERC20/ERC20Detailed.sol": {
+			"keccak256": "0x8034b14917a770a79a761769bfff95464ad431fad758be410f3a57ffd80a61c6",
+			"urls": [
+				"bzzr://093ccda4f849bc03c8d68aa5b3f94b43cfa73d8392452b1a45d6d4e1f966f1f0"
+			]
+		},
+		"openzeppelin-eth/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0x0786a09def412e5a92e1da8545114b39f9bbd8bd1ba6f62a5bf8b81f54ab25bf",
+			"urls": [
+				"bzzr://b35dbbf6dd505fcb601ca968d4628714a3af84024224228433eadf700e94f250"
+			]
+		},
+		"zos-lib/contracts/Initializable.sol": {
+			"keccak256": "0xac4cc87395794e21e95549a1b4002881621d59878c4129d534a0089ce5cf7212",
+			"urls": [
+				"bzzr://1725ac3e1941f8e2bf5c1966abd66bd744d40c85ae8195eb697ec3256bc1fc39"
+			]
+		}
+	},
+	"version": 1
+}

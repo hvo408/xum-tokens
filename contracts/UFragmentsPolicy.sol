@@ -98,10 +98,11 @@ contract UFragmentsPolicy is Ownable {
      *      and targetRate is CpiOracleRate / baseCpi
      */
     function rebase() external onlyOrchestrator {
-        require(inRebaseWindow());
+        require(inRebaseWindow(), "not in rebase window");
 
         // This comparison also ensures there is no reentrancy.
-        require(lastRebaseTimestampSec.add(minRebaseTimeIntervalSec) < now);
+        require(lastRebaseTimestampSec.add(minRebaseTimeIntervalSec) < now,
+          "Cannot run rebase again this soon");
 
         // Snap the rebase time to the start of this window.
         lastRebaseTimestampSec = now.sub(

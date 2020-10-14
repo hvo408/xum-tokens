@@ -1,0 +1,626 @@
+{
+	"compiler": {
+		"version": "0.4.24+commit.e67f0147"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "name",
+				"outputs": [
+					{
+						"name": "",
+						"type": "string"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "approve",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"name": "symbol",
+						"type": "string"
+					},
+					{
+						"name": "decimals",
+						"type": "uint8"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "totalSupply",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "transferFrom",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "decimals",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"name": "addedValue",
+						"type": "uint256"
+					}
+				],
+				"name": "increaseAllowance",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "who",
+						"type": "address"
+					}
+				],
+				"name": "balanceOf",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "epoch",
+						"type": "uint256"
+					},
+					{
+						"name": "supplyDelta",
+						"type": "int256"
+					}
+				],
+				"name": "rebase",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "monetaryPolicy_",
+						"type": "address"
+					}
+				],
+				"name": "setMonetaryPolicy",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "monetaryPolicy",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "isOwner",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "symbol",
+				"outputs": [
+					{
+						"name": "",
+						"type": "string"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"name": "subtractedValue",
+						"type": "uint256"
+					}
+				],
+				"name": "decreaseAllowance",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "transfer",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "owner_",
+						"type": "address"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "owner_",
+						"type": "address"
+					},
+					{
+						"name": "spender",
+						"type": "address"
+					}
+				],
+				"name": "allowance",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "epoch",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"name": "totalSupply",
+						"type": "uint256"
+					}
+				],
+				"name": "LogRebase",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"name": "monetaryPolicy",
+						"type": "address"
+					}
+				],
+				"name": "LogMonetaryPolicyUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "previousOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipRenounced",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "Transfer",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "Approval",
+				"type": "event"
+			}
+		],
+		"devdoc": {
+			"methods": {
+				"allowance(address,address)": {
+					"details": "Function to check the amount of tokens that an owner has allowed to a spender.",
+					"params": {
+						"owner_": "The address which owns the funds.",
+						"spender": "The address which will spend the funds."
+					},
+					"return": "The number of tokens still available for the spender."
+				},
+				"approve(address,uint256)": {
+					"details": "Approve the passed address to spend the specified amount of tokens on behalf of msg.sender. This method is included for ERC20 compatibility. increaseAllowance and decreaseAllowance should be used instead. Changing an allowance with this method brings the risk that someone may transfer both the old and the new allowance - if they are both greater than zero - if a transfer transaction is mined before the later approve() call is mined.",
+					"params": {
+						"spender": "The address which will spend the funds.",
+						"value": "The amount of tokens to be spent."
+					}
+				},
+				"balanceOf(address)": {
+					"params": {
+						"who": "The address to query."
+					},
+					"return": "The balance of the specified address."
+				},
+				"decimals()": {
+					"return": "the number of decimals of the token."
+				},
+				"decreaseAllowance(address,uint256)": {
+					"details": "Decrease the amount of tokens that an owner has allowed to a spender.",
+					"params": {
+						"spender": "The address which will spend the funds.",
+						"subtractedValue": "The amount of tokens to decrease the allowance by."
+					}
+				},
+				"increaseAllowance(address,uint256)": {
+					"details": "Increase the amount of tokens that an owner has allowed to a spender. This method should be used instead of approve() to avoid the double approval vulnerability described above.",
+					"params": {
+						"addedValue": "The amount of tokens to increase the allowance by.",
+						"spender": "The address which will spend the funds."
+					}
+				},
+				"isOwner()": {
+					"return": "true if `msg.sender` is the owner of the contract."
+				},
+				"name()": {
+					"return": "the name of the token."
+				},
+				"owner()": {
+					"return": "the address of the owner."
+				},
+				"rebase(uint256,int256)": {
+					"details": "Notifies Fragments contract about a new rebase cycle.",
+					"params": {
+						"supplyDelta": "The number of new fragment tokens to add into circulation via expansion."
+					},
+					"return": "The total number of fragments after the supply adjustment."
+				},
+				"renounceOwnership()": {
+					"details": "Allows the current owner to relinquish control of the contract."
+				},
+				"setMonetaryPolicy(address)": {
+					"params": {
+						"monetaryPolicy_": "The address of the monetary policy contract to use for authentication."
+					}
+				},
+				"symbol()": {
+					"return": "the symbol of the token."
+				},
+				"totalSupply()": {
+					"return": "The total number of fragments."
+				},
+				"transfer(address,uint256)": {
+					"details": "Transfer tokens to a specified address.",
+					"params": {
+						"to": "The address to transfer to.",
+						"value": "The amount to be transferred."
+					},
+					"return": "True on success, false otherwise."
+				},
+				"transferFrom(address,address,uint256)": {
+					"details": "Transfer tokens from one address to another.",
+					"params": {
+						"from": "The address you want to send tokens from.",
+						"to": "The address you want to transfer to.",
+						"value": "The amount of tokens to be transferred."
+					}
+				},
+				"transferOwnership(address)": {
+					"details": "Allows the current owner to transfer control of the contract to a newOwner.",
+					"params": {
+						"newOwner": "The address to transfer ownership to."
+					}
+				}
+			},
+			"title": "uFragments ERC20 token"
+		},
+		"userdoc": {
+			"methods": {
+				"renounceOwnership()": {
+					"notice": "Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore."
+				}
+			}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"localhost/contracts/UFragments.sol": "UFragments"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"localhost/contracts/UFragments.sol": {
+			"keccak256": "0xa8d2773064ea6b34ef55b9b733dea85eca0ecaf8a7ccfc8db5a073d1c7d9cb13",
+			"urls": [
+				"bzzr://1c84f35930ebb5ee3551e661fc409c43ae8b38dd0a2eed9385d47dcf711adfbc"
+			]
+		},
+		"localhost/contracts/lib/SafeMathInt.sol": {
+			"keccak256": "0xefed5c4a0229c973a6168fdd5eb2b51d76072262b9743a78342098bedf98e1e1",
+			"urls": [
+				"bzzr://8f99fe607f80c0792ca5c2d2df045649868f826751184bb25990b9bbdf9d03fd"
+			]
+		},
+		"openzeppelin-eth/contracts/math/SafeMath.sol": {
+			"keccak256": "0xca27427124232a675642ba45303b78d5a36e1207ee222030ef249e11eba5a224",
+			"urls": [
+				"bzzr://013c67962737acca577ecd24e6b6c80f85b05fd03c1c75ab68f65a084f4b4cfd"
+			]
+		},
+		"openzeppelin-eth/contracts/ownership/Ownable.sol": {
+			"keccak256": "0x1c591a78d1b95b5f22f6769116eeedb627334475ae005a6c8228598981f74989",
+			"urls": [
+				"bzzr://4b76436911177bd8b9ba061d626731bb90f61c6be482fe94d2b96e8be169cd83"
+			]
+		},
+		"openzeppelin-eth/contracts/token/ERC20/ERC20Detailed.sol": {
+			"keccak256": "0x8034b14917a770a79a761769bfff95464ad431fad758be410f3a57ffd80a61c6",
+			"urls": [
+				"bzzr://093ccda4f849bc03c8d68aa5b3f94b43cfa73d8392452b1a45d6d4e1f966f1f0"
+			]
+		},
+		"openzeppelin-eth/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0x0786a09def412e5a92e1da8545114b39f9bbd8bd1ba6f62a5bf8b81f54ab25bf",
+			"urls": [
+				"bzzr://b35dbbf6dd505fcb601ca968d4628714a3af84024224228433eadf700e94f250"
+			]
+		},
+		"zos-lib/contracts/Initializable.sol": {
+			"keccak256": "0xac4cc87395794e21e95549a1b4002881621d59878c4129d534a0089ce5cf7212",
+			"urls": [
+				"bzzr://1725ac3e1941f8e2bf5c1966abd66bd744d40c85ae8195eb697ec3256bc1fc39"
+			]
+		}
+	},
+	"version": 1
+}
