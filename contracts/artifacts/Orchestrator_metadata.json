@@ -330,9 +330,9 @@
 			]
 		},
 		"localhost/contracts/UFragmentsPolicy.sol": {
-			"keccak256": "0x2218b96bb53df911205d54d1e51da1aa7395296622d5f24669a7731fd327183e",
+			"keccak256": "0x210afc607b7f8efda79ef75b989189b6ab4dfcc3e8effe75806a17745bc38f28",
 			"urls": [
-				"bzzr://971f4d1b9fb2721169f7c844a6abeaa03e3c4c90eeb86b83f377928fa153ddbe"
+				"bzzr://b9635f2cebb7dd8245b769aade9973a73c99b6983c280beb58c0aa85dd4e26bf"
 			]
 		},
 		"localhost/contracts/lib/SafeMathInt.sol": {

@@ -580,9 +580,9 @@
 	},
 	"sources": {
 		"localhost/contracts/UFragments.sol": {
-			"keccak256": "0xa8d2773064ea6b34ef55b9b733dea85eca0ecaf8a7ccfc8db5a073d1c7d9cb13",
+			"keccak256": "0xde1f5fcf9afa3a3754f41b78c668790f31838c739952dc941f5ffee8bf77b970",
 			"urls": [
-				"bzzr://1c84f35930ebb5ee3551e661fc409c43ae8b38dd0a2eed9385d47dcf711adfbc"
+				"bzzr://f74dd6e22c582016fa154e15f6e34b346250fc47a063e205c506a43671f59b2b"
 			]
 		},
 		"localhost/contracts/lib/SafeMathInt.sol": {

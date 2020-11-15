@@ -4,7 +4,12 @@ module.exports = {
   networks: {
     ganacheUnitTest: connectionConfig.ganacheUnitTest,
     gethUnitTest: connectionConfig.gethUnitTest,
-    testrpcCoverage: connectionConfig.testrpcCoverage
+    testrpcCoverage: connectionConfig.testrpcCoverage,
+    localdev: {
+      host: 'localhost',
+      port: 7546,
+      network_id: '*' // Match any network id
+    }
   },
   compilers: {
     solc: {
