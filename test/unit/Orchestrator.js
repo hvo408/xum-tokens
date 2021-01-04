@@ -1,10 +1,10 @@
 const MockDownstream = artifacts.require('MockDownstream.sol');
-const MockUFragmentsPolicy = artifacts.require('MockUFragmentsPolicy.sol');
+const MockXUMFragmentsPolicy = artifacts.require('MockXUMFragmentsPolicy.sol');
 const Orchestrator = artifacts.require('Orchestrator.sol');
 const RebaseCallerContract = artifacts.require('RebaseCallerContract.sol');
 const ConstructorRebaseCallerContract = artifacts.require('ConstructorRebaseCallerContract.sol');
 
-const BigNumber = web3.BigNumber;
+const BigNumber = require('bignumber.js');
 const _require = require('app-root-path').require;
 const BlockchainCaller = _require('/util/blockchain_caller');
 const chain = new BlockchainCaller(web3);
@@ -23,7 +23,7 @@ async function setupContracts () {
   const accounts = await chain.getUserAccounts();
   deployer = accounts[0];
   user = accounts[1];
-  mockPolicy = await MockUFragmentsPolicy.new();
+  mockPolicy = await MockXUMFragmentsPolicy.new();
   orchestrator = await Orchestrator.new(mockPolicy.address);
   mockDownstream = await MockDownstream.new();
 }
@@ -67,7 +67,7 @@ contract('Orchestrator', function (accounts) {
 
     it('should call rebase on policy', async function () {
       const fnCalled = mockPolicy.FunctionCalled().formatter(r.receipt.logs[0]);
-      expect(fnCalled.args.instanceName).to.eq('UFragmentsPolicy');
+      expect(fnCalled.args.instanceName).to.eq('XUMFragmentsPolicy');
       expect(fnCalled.args.functionName).to.eq('rebase');
       expect(fnCalled.args.caller).to.eq(orchestrator.address);
     });
@@ -90,7 +90,7 @@ contract('Orchestrator', function (accounts) {
 
     it('should call rebase on policy', async function () {
       const fnCalled = mockPolicy.FunctionCalled().formatter(r.receipt.logs[0]);
-      expect(fnCalled.args.instanceName).to.eq('UFragmentsPolicy');
+      expect(fnCalled.args.instanceName).to.eq('XUMFragmentsPolicy');
       expect(fnCalled.args.functionName).to.eq('rebase');
       expect(fnCalled.args.caller).to.eq(orchestrator.address);
     });
@@ -126,7 +126,7 @@ contract('Orchestrator', function (accounts) {
 
     it('should call rebase on policy', async function () {
       const fnCalled = mockPolicy.FunctionCalled().formatter(r.receipt.logs[0]);
-      expect(fnCalled.args.instanceName).to.eq('UFragmentsPolicy');
+      expect(fnCalled.args.instanceName).to.eq('XUMFragmentsPolicy');
       expect(fnCalled.args.functionName).to.eq('rebase');
       expect(fnCalled.args.caller).to.eq(orchestrator.address);
     });
@@ -174,7 +174,7 @@ contract('Orchestrator', function (accounts) {
 
     it('should call rebase on policy', async function () {
       const fnCalled = mockPolicy.FunctionCalled().formatter(r.receipt.logs[0]);
-      expect(fnCalled.args.instanceName).to.eq('UFragmentsPolicy');
+      expect(fnCalled.args.instanceName).to.eq('XUMFragmentsPolicy');
       expect(fnCalled.args.functionName).to.eq('rebase');
       expect(fnCalled.args.caller).to.eq(orchestrator.address);
     });
@@ -209,7 +209,7 @@ contract('Orchestrator', function (accounts) {
 
     it('should call rebase on policy', async function () {
       const fnCalled = mockPolicy.FunctionCalled().formatter(r.receipt.logs[0]);
-      expect(fnCalled.args.instanceName).to.eq('UFragmentsPolicy');
+      expect(fnCalled.args.instanceName).to.eq('XUMFragmentsPolicy');
       expect(fnCalled.args.functionName).to.eq('rebase');
       expect(fnCalled.args.caller).to.eq(orchestrator.address);
     });
@@ -244,7 +244,7 @@ contract('Orchestrator', function (accounts) {
 
     it('should call rebase on policy', async function () {
       const fnCalled = mockPolicy.FunctionCalled().formatter(r.receipt.logs[0]);
-      expect(fnCalled.args.instanceName).to.eq('UFragmentsPolicy');
+      expect(fnCalled.args.instanceName).to.eq('XUMFragmentsPolicy');
       expect(fnCalled.args.functionName).to.eq('rebase');
       expect(fnCalled.args.caller).to.eq(orchestrator.address);
     });

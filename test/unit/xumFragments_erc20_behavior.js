@@ -22,15 +22,15 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
-  This file tests if the UFragments contract confirms to the ERC20 specification.
+  This file tests if the XUMFragments contract confirms to the ERC20 specification.
   These test cases are inspired from OpenZepplin's ERC20 unit test.
   https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/test/token/ERC20/ERC20.test.js
 */
-const UFragments = artifacts.require('UFragments.sol');
+const XUMFragments = artifacts.require('XUMFragments.sol');
 const _require = require('app-root-path').require;
 const BlockchainCaller = _require('/util/blockchain_caller');
 const chain = new BlockchainCaller(web3);
-const BigNumber = web3.BigNumber;
+const BigNumber = require('bignumber.js');
 const encodeCall = require('zos-lib/lib/helpers/encodeCall').default;
 
 require('chai')
@@ -39,7 +39,7 @@ require('chai')
 
 const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
 function toTokenDenomination (x) {
-  return new BigNumber(x).mul(10 ** DECIMALS);
+  return new BigNumber(x).multipliedBy(10 ** DECIMALS);
 }
 const DECIMALS = 9;
 const INITIAL_SUPPLY = toTokenDenomination(50 * 10 ** 6);
@@ -56,15 +56,15 @@ async function setupContractAndAccounts (accounts) {
   owner = accounts[0];
   anotherAccount = accounts[8];
   recipient = accounts[9];
-  token = await UFragments.new();
+  token = await XUMFragments.new();
   await token.sendTransaction({
     data: encodeCall('initialize', ['address'], [owner]),
     from: owner
   });
 }
 
-contract('UFragments:ERC20', function (accounts) {
-  before('setup UFragments contract', async function () {
+contract('XUMFragments:ERC20', function (accounts) {
+  before('setup XUMFragments contract', async function () {
     await setupContractAndAccounts(accounts);
   });
 
@@ -89,8 +89,8 @@ contract('UFragments:ERC20', function (accounts) {
   });
 });
 
-contract('UFragments:ERC20:transfer', function (accounts) {
-  before('setup UFragments contract', async function () {
+contract('XUMFragments:ERC20:transfer', function (accounts) {
+  before('setup XUMFragments contract', async function () {
     await setupContractAndAccounts(accounts);
   });
 
@@ -132,8 +132,8 @@ contract('UFragments:ERC20:transfer', function (accounts) {
   });
 });
 
-contract('UFragments:ERC20:transferFrom', function (accounts) {
-  before('setup UFragments contract', async function () {
+contract('XUMFragments:ERC20:transferFrom', function (accounts) {
+  before('setup XUMFragments contract', async function () {
     await setupContractAndAccounts(accounts);
   });
 
@@ -195,8 +195,8 @@ contract('UFragments:ERC20:transferFrom', function (accounts) {
   });
 });
 
-contract('UFragments:ERC20:approve', function (accounts) {
-  before('setup UFragments contract', async function () {
+contract('XUMFragments:ERC20:approve', function (accounts) {
+  before('setup XUMFragments contract', async function () {
     await setupContractAndAccounts(accounts);
   });
 
@@ -283,8 +283,8 @@ contract('UFragments:ERC20:approve', function (accounts) {
   });
 });
 
-contract('UFragments:ERC20:increaseAllowance', function (accounts) {
-  before('setup UFragments contract', async function () {
+contract('XUMFragments:ERC20:increaseAllowance', function (accounts) {
+  before('setup XUMFragments contract', async function () {
     await setupContractAndAccounts(accounts);
   });
 
@@ -370,8 +370,8 @@ contract('UFragments:ERC20:increaseAllowance', function (accounts) {
   });
 });
 
-contract('UFragments:ERC20:decreaseAllowance', function (accounts) {
-  before('setup UFragments contract', async function () {
+contract('XUMFragments:ERC20:decreaseAllowance', function (accounts) {
+  before('setup XUMFragments contract', async function () {
     await setupContractAndAccounts(accounts);
   });
 

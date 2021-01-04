@@ -53,7 +53,7 @@ module.exports = {
               "bytecode", "Binance", "ethereum", "opcode", "cpi", "ampleforth", "orchestrator", "openzeppelin",
 
               // names
-              "nithin",
+              "nithin", "xum", "localhost", "localdev",
             ],
             "skipIfMatch": [
               "http(s)?://[^s]*",

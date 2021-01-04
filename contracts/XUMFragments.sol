@@ -1,4 +1,4 @@
-pragma solidity 0.4.24;
+pragma solidity 0.5.3;
 
 import "openzeppelin-eth/contracts/math/SafeMath.sol";
 import "openzeppelin-eth/contracts/ownership/Ownable.sol";
@@ -8,16 +8,16 @@ import "./lib/SafeMathInt.sol";
 
 
 /**
- * @title uFragments ERC20 token
- * @dev This is part of an implementation of the uFragments Ideal Money protocol.
- *      uFragments is a normal ERC20 token, but its supply can be adjusted by splitting and
+ * @title xumFragments ERC20 token
+ * @dev This is part of an implementation of the xumFragments Ideal Money protocol.
+ *      xumFragments is a normal ERC20 token, but its supply can be adjusted by splitting and
  *      combining tokens proportionally across all wallets.
  *
- *      uFragment balances are internally represented with a hidden denomination, 'gons'.
+ *      xumFragment balances are internally represented with a hidden denomination, 'gons'.
  *      We support splitting the currency in expansion and combining the currency on contraction by
  *      changing the exchange rate between the hidden 'gons' and the public 'fragments'.
  */
-contract UFragments is ERC20Detailed, Ownable {
+contract XUMFragments is ERC20Detailed, Ownable {
     // PLEASE READ BEFORE CHANGING ANY ACCOUNTING OR MATH
     // Anytime there is division, there is a risk of numerical instability from rounding errors. In
     // order to minimize this risk, we adhere to the following guidelines:

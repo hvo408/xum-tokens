@@ -1,13 +1,13 @@
 /* eslint-disable arrow-parens */
 /* eslint-disable spellcheck/spell-checker */
-const XUMToken = artifacts.require('UFragments.sol');
-const MoneyPolicy = artifacts.require('UFragmentsPolicy.sol');
+const XUMToken = artifacts.require('XUMFragments.sol');
+const MoneyPolicy = artifacts.require('XUMFragmentsPolicy.sol');
 const Orchestrator = artifacts.require('Orchestrator.sol');
 const BigNumber = require('bignumber.js');
 
 module.exports = async (deployer) => {
   try {
-    const ownerAddr = '0x97EC98868ffB34CC5faF980A18994c8A2ebf181b';
+    const ownerAddr = '0x9fA4cd86B0b6Ea8C94CAED2637650Eb4Cb2b45A2';
     const cpiOracleAddr = '0xDB021b1B247fe2F1fa57e0A87C748Cc1E321F07F';
     const marketOracleAddr = '0x47fB203e1d75FB2c518Cd56f3a8094D22A46aF83';
 
@@ -25,8 +25,10 @@ module.exports = async (deployer) => {
     await policyInst.setCpiOracle(cpiOracleAddr);
     await policyInst.setMarketOracle(marketOracleAddr);
     await tokenInst.setMonetaryPolicy(policyInst.address);
+    const baseCpi = await policyInst.getBaseCpi();
+    console.log(`showing base cpi ${baseCpi}`);
 
-    console.log(`Deploying orchestrator with polity addr ${policyInst.address}`);
+    console.log(`Deploying orchestrator with policy addr ${policyInst.address}`);
     await deployer.deploy(Orchestrator, policyInst.address);
     const orchestratorInst = await Orchestrator.deployed();
     await policyInst.setOrchestrator(orchestratorInst.address);

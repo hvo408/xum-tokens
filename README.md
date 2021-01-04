@@ -1,8 +1,8 @@
 # Ampleforth
 
-[![Build Status](https://travis-ci.com/ampleforth/uFragments.svg?token=xxNsLhLrTiyG3pc78i5v&branch=master)](https://travis-ci.com/ampleforth/uFragments)&nbsp;&nbsp;[![Coverage Status](https://coveralls.io/repos/github/frgprotocol/uFragments/badge.svg?branch=master&t=GiWi8p)](https://coveralls.io/github/frgprotocol/uFragments?branch=master)
+[![Build Status](https://travis-ci.com/ampleforth/xumFragments.svg?token=xxNsLhLrTiyG3pc78i5v&branch=master)](https://travis-ci.com/ampleforth/xumFragments)&nbsp;&nbsp;[![Coverage Status](https://coveralls.io/repos/github/frgprotocol/xumFragments/badge.svg?branch=master&t=GiWi8p)](https://coveralls.io/github/frgprotocol/xumFragments?branch=master)
 
-Ampleforth (code name uFragments) is a decentralized elastic supply protocol. It maintains a stable unit price by adjusting supply directly to and from wallet holders. You can read the [whitepaper](https://www.ampleforth.org/paper/) for the motivation and a complete description of the protocol.
+Ampleforth (code name xumFragments) is a decentralized elastic supply protocol. It maintains a stable unit price by adjusting supply directly to and from wallet holders. You can read the [whitepaper](https://www.ampleforth.org/paper/) for the motivation and a complete description of the protocol.
 
 This repository is a collection of [smart contracts](http://ampleforth.org/docs) that implement the Ampleforth protocol on the Ethereum blockchain.
 
@@ -42,7 +42,7 @@ npx start-chain [ganacheUnitTest|gethUnitTest]
 npm test
 
 # Run unit tests in isolation
-npx truffle --network ganacheUnitTest test test/unit/uFragments.js
+npx truffle --network ganacheUnitTest test test/unit/xumFragments.js
 ```
 
 ## Testnets

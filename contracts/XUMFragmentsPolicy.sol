@@ -1,11 +1,11 @@
-pragma solidity 0.4.24;
+pragma solidity 0.5.3;
 
 import "openzeppelin-eth/contracts/math/SafeMath.sol";
 import "openzeppelin-eth/contracts/ownership/Ownable.sol";
 
 import "./lib/SafeMathInt.sol";
 import "./lib/UInt256Lib.sol";
-import "./UFragments.sol";
+import "./XUMFragments.sol";
 
 
 interface IOracle {
@@ -14,15 +14,15 @@ interface IOracle {
 
 
 /**
- * @title uFragments Monetary Supply Policy
- * @dev This is an implementation of the uFragments Ideal Money protocol.
- *      uFragments operates symmetrically on expansion and contraction. It will both split and
+ * @title xumFragments Monetary Supply Policy
+ * @dev This is an implementation of the xumFragments Ideal Money protocol.
+ *      xumFragments operates symmetrically on expansion and contraction. It will both split and
  *      combine coins to maintain a stable unit price.
  *
- *      This component regulates the token supply of the uFragments ERC20 token in response to
+ *      This component regulates the token supply of the xumFragments ERC20 token in response to
  *      market oracles.
  */
-contract UFragmentsPolicy is Ownable {
+contract XUMFragmentsPolicy is Ownable {
     using SafeMath for uint256;
     using SafeMathInt for int256;
     using UInt256Lib for uint256;
@@ -35,7 +35,7 @@ contract UFragmentsPolicy is Ownable {
         uint256 timestampSec
     );
 
-    UFragments public uFrags;
+    XUMFragments public uFrags;
 
     // Provides the current CPI, as an 18 decimal fixed point number.
     IOracle public cpiOracle;
@@ -88,6 +88,10 @@ contract UFragmentsPolicy is Ownable {
     modifier onlyOrchestrator() {
         require(msg.sender == orchestrator);
         _;
+    }
+
+    function getBaseCpi() external view returns (uint256) {
+      return baseCpi;
     }
 
     /**
@@ -234,7 +238,7 @@ contract UFragmentsPolicy is Ownable {
      *      It is called at the time of contract creation to invoke parent class initializers and
      *      initialize the contract's state variables.
      */
-    function initialize(address owner_, UFragments uFrags_, uint256 baseCpi_)
+    function initialize(address owner_, XUMFragments uFrags_, uint256 baseCpi_)
         public
         initializer
     {
