@@ -1,8 +1,8 @@
-pragma solidity 0.5.3;
+pragma solidity ^0.6.0;
 
-import "openzeppelin-eth/contracts/math/SafeMath.sol";
-import "openzeppelin-eth/contracts/ownership/Ownable.sol";
-import "openzeppelin-eth/contracts/token/ERC20/ERC20Detailed.sol";
+import "@openzeppelin/contracts-upgradeable/math/SafeMathUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
 
 import "./lib/SafeMathInt.sol";
 
@@ -17,7 +17,7 @@ import "./lib/SafeMathInt.sol";
  *      We support splitting the currency in expansion and combining the currency on contraction by
  *      changing the exchange rate between the hidden 'gons' and the public 'fragments'.
  */
-contract XUMFragments is ERC20Detailed, Ownable {
+contract XUMFragments is ERC20Upgradeable, OwnableUpgradeable {
     // PLEASE READ BEFORE CHANGING ANY ACCOUNTING OR MATH
     // Anytime there is division, there is a risk of numerical instability from rounding errors. In
     // order to minimize this risk, we adhere to the following guidelines:
@@ -35,7 +35,7 @@ contract XUMFragments is ERC20Detailed, Ownable {
     // We do not guarantee that the sum of all balances equals the result of calling totalSupply().
     // This is because, for any conversion function 'f()' that has non-zero rounding error,
     // f(x0) + f(x1) + ... + f(xn) is not always equal to f(x0 + x1 + ... xn).
-    using SafeMath for uint256;
+    using SafeMathUpgradeable for uint256;
     using SafeMathInt for int256;
 
     event LogRebase(uint256 indexed epoch, uint256 totalSupply);
@@ -60,7 +60,7 @@ contract XUMFragments is ERC20Detailed, Ownable {
 
     uint256 private constant DECIMALS = 9;
     uint256 private constant MAX_UINT256 = ~uint256(0);
-    uint256 private constant INITIAL_FRAGMENTS_SUPPLY = 50 * 10**6 * 10**DECIMALS;
+    uint256 private constant INITIAL_FRAGMENTS_SUPPLY = 100 * 10**6 * 10**DECIMALS;
 
     // TOTAL_GONS is a multiple of INITIAL_FRAGMENTS_SUPPLY so that _gonsPerFragment is an integer.
     // Use the highest value that fits in a uint256 for max granularity.
@@ -134,8 +134,11 @@ contract XUMFragments is ERC20Detailed, Ownable {
         public
         initializer
     {
-        ERC20Detailed.initialize("XUM Financial", "XUM", uint8(DECIMALS));
-        Ownable.initialize(owner_);
+        __ERC20_init("XUM Finance", "XUM");
+        _setupDecimals(uint8(DECIMALS));
+        // ERC20Upgradeable.initialize("XUM Finance", "XUM", uint8(DECIMALS));
+        __Ownable_init();
+        // OwnableUpgradeable.initialize(owner_);
 
         rebasePausedDeprecated = false;
         tokenPausedDeprecated = false;
@@ -153,6 +156,7 @@ contract XUMFragments is ERC20Detailed, Ownable {
     function totalSupply()
         public
         view
+        override
         returns (uint256)
     {
         return _totalSupply;
@@ -165,6 +169,7 @@ contract XUMFragments is ERC20Detailed, Ownable {
     function balanceOf(address who)
         public
         view
+        override
         returns (uint256)
     {
         return _gonBalances[who].div(_gonsPerFragment);
@@ -179,6 +184,7 @@ contract XUMFragments is ERC20Detailed, Ownable {
     function transfer(address to, uint256 value)
         public
         validRecipient(to)
+        override
         returns (bool)
     {
         uint256 gonValue = value.mul(_gonsPerFragment);
@@ -196,6 +202,7 @@ contract XUMFragments is ERC20Detailed, Ownable {
      */
     function allowance(address owner_, address spender)
         public
+        override
         view
         returns (uint256)
     {
@@ -210,6 +217,7 @@ contract XUMFragments is ERC20Detailed, Ownable {
      */
     function transferFrom(address from, address to, uint256 value)
         public
+        override
         validRecipient(to)
         returns (bool)
     {
@@ -236,6 +244,7 @@ contract XUMFragments is ERC20Detailed, Ownable {
      */
     function approve(address spender, uint256 value)
         public
+        override
         returns (bool)
     {
         _allowedFragments[msg.sender][spender] = value;
@@ -252,6 +261,7 @@ contract XUMFragments is ERC20Detailed, Ownable {
      */
     function increaseAllowance(address spender, uint256 addedValue)
         public
+        override
         returns (bool)
     {
         _allowedFragments[msg.sender][spender] =
@@ -268,6 +278,7 @@ contract XUMFragments is ERC20Detailed, Ownable {
      */
     function decreaseAllowance(address spender, uint256 subtractedValue)
         public
+        override
         returns (bool)
     {
         uint256 oldValue = _allowedFragments[msg.sender][spender];
