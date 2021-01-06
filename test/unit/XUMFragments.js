@@ -3,7 +3,8 @@ const XUMFragments = artifacts.require('XUMFragments.sol');
 const _require = require('app-root-path').require;
 const BlockchainCaller = _require('/util/blockchain_caller');
 const chain = new BlockchainCaller(web3);
-const BigNumber = require('bignumber.js');
+const BigNumber = web3.utils.BN;
+// const BigNumber = require('bn.js');
 const encodeCall = require('zos-lib/lib/helpers/encodeCall').default;
 
 require('chai')
@@ -11,10 +12,12 @@ require('chai')
   .should();
 
 function toUFrgDenomination (x) {
-  return new BigNumber(x).multipliedBy(10 ** DECIMALS);
+  return new BigNumber(x).mul(new BigNumber(10 ** DECIMALS));
 }
 const DECIMALS = 9;
-const INTIAL_SUPPLY = toUFrgDenomination(50 * 10 ** 6);
+const INTIAL_SUPPLY = toUFrgDenomination(100 * 10 ** 6);
+// const INTIAL_SUPPLY = new BigNumber(100 * 1e15);
+
 const transferAmount = toUFrgDenomination(10);
 const unitTokenAmount = toUFrgDenomination(1);
 const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
@@ -45,7 +48,7 @@ contract('XUMFragments', function (accounts) {
 contract('XUMFragments:Initialization', function (accounts) {
   before('setup XUMFragments contract', setupContracts);
 
-  it('should transfer 50M xumFragments to the deployer', async function () {
+  it('should transfer 100M xumFragments to the deployer', async function () {
     (await xumFragments.balanceOf.call(deployer)).should.be.bignumber.eq(INTIAL_SUPPLY);
     const log = r.logs[0];
     expect(log).to.exist;
@@ -55,7 +58,7 @@ contract('XUMFragments:Initialization', function (accounts) {
     log.args.value.should.be.bignumber.eq(INTIAL_SUPPLY);
   });
 
-  it('should set the totalSupply to 50M', async function () {
+  it('should set the totalSupply to 100M', async function () {
     initialSupply.should.be.bignumber.eq(INTIAL_SUPPLY);
   });
 
@@ -64,8 +67,8 @@ contract('XUMFragments:Initialization', function (accounts) {
   });
 
   it('should set detailed ERC20 parameters', async function () {
-    expect(await xumFragments.name.call()).to.eq('Ampleforth');
-    expect(await xumFragments.symbol.call()).to.eq('AMPL');
+    expect(await xumFragments.name.call()).to.eq('XUM Finance');
+    expect(await xumFragments.symbol.call()).to.eq('XUM');
     (await xumFragments.decimals.call()).should.be.bignumber.eq(DECIMALS);
   });
 
@@ -74,9 +77,9 @@ contract('XUMFragments:Initialization', function (accounts) {
     decimals.should.be.bignumber.eq(DECIMALS);
   });
 
-  it('should have AMPL symbol', async function () {
+  it('should have XUM symbol', async function () {
     const symbol = await xumFragments.symbol.call();
-    symbol.should.be.eq('AMPL');
+    symbol.should.be.eq('XUM');
   });
 });
 
@@ -189,14 +192,14 @@ contract('XUMFragments:Rebase:Expansion', function (accounts) {
 
 contract('XUMFragments:Rebase:Expansion', function (accounts) {
   const policy = accounts[1];
-  const MAX_SUPPLY = new BigNumber(2).pow(128).minus(1);
+  const MAX_SUPPLY = new BigNumber(2).pow(new BigNumber(128)).sub(new BigNumber(1));
 
   describe('when totalSupply is less than MAX_SUPPLY and expands beyond', function () {
     before('setup XUMFragments contract', async function () {
       await setupContracts();
       await xumFragments.setMonetaryPolicy(policy, {from: deployer});
       const totalSupply = await xumFragments.totalSupply.call();
-      await xumFragments.rebase(1, MAX_SUPPLY.minus(totalSupply).minus(toUFrgDenomination(1)), {from: policy});
+      await xumFragments.rebase(1, MAX_SUPPLY.sub(totalSupply).sub(toUFrgDenomination(1)), {from: policy});
       r = await xumFragments.rebase(2, toUFrgDenomination(2), {from: policy});
     });
 
@@ -289,7 +292,7 @@ contract('XUMFragments:Rebase:Contraction', function (accounts) {
 
   it('should decrease the totalSupply', async function () {
     b = await xumFragments.totalSupply.call();
-    b.should.be.bignumber.eq(initialSupply.minus(rebaseAmt));
+    b.should.be.bignumber.eq(initialSupply.sub(rebaseAmt));
   });
 
   it('should decrease individual balances', async function () {
@@ -305,7 +308,7 @@ contract('XUMFragments:Rebase:Contraction', function (accounts) {
     expect(log).to.exist;
     expect(log.event).to.eq('LogRebase');
     log.args.epoch.should.be.bignumber.eq(1);
-    log.args.totalSupply.should.be.bignumber.eq(initialSupply.minus(rebaseAmt));
+    log.args.totalSupply.should.be.bignumber.eq(initialSupply.sub(rebaseAmt));
   });
 });
 
@@ -321,7 +324,7 @@ contract('XUMFragments:Transfer', function (accounts) {
       const deployerBefore = await xumFragments.balanceOf.call(deployer);
       await xumFragments.transfer(A, toUFrgDenomination(12), { from: deployer });
       b = await xumFragments.balanceOf.call(deployer);
-      b.should.be.bignumber.eq(deployerBefore.minus(toUFrgDenomination(12)));
+      b.should.be.bignumber.eq(deployerBefore.sub(toUFrgDenomination(12)));
       b = await xumFragments.balanceOf.call(A);
       b.should.be.bignumber.eq(toUFrgDenomination(12));
     });
@@ -332,7 +335,7 @@ contract('XUMFragments:Transfer', function (accounts) {
       const deployerBefore = await xumFragments.balanceOf.call(deployer);
       await xumFragments.transfer(B, toUFrgDenomination(15), { from: deployer });
       b = await xumFragments.balanceOf.call(deployer);
-      b.should.be.bignumber.eq(deployerBefore.minus(toUFrgDenomination(15)));
+      b.should.be.bignumber.eq(deployerBefore.sub(toUFrgDenomination(15)));
       b = await xumFragments.balanceOf.call(B);
       b.should.be.bignumber.eq(toUFrgDenomination(15));
     });

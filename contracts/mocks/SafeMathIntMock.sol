@@ -1,4 +1,4 @@
-pragma solidity 0.5.3;
+pragma solidity ^0.6.0;
 
 import "./Mock.sol";
 import "../lib/SafeMathInt.sol";

@@ -1,7 +1,7 @@
-pragma solidity 0.5.3;
+pragma solidity ^0.6.0;
 
-import "openzeppelin-eth/contracts/math/SafeMath.sol";
-import "openzeppelin-eth/contracts/ownership/Ownable.sol";
+import "@openzeppelin/contracts-upgradeable/math/SafeMathUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 import "./lib/SafeMathInt.sol";
 import "./lib/UInt256Lib.sol";
@@ -22,8 +22,8 @@ interface IOracle {
  *      This component regulates the token supply of the xumFragments ERC20 token in response to
  *      market oracles.
  */
-contract XUMFragmentsPolicy is Ownable {
-    using SafeMath for uint256;
+contract XUMFragmentsPolicy is OwnableUpgradeable {
+    using SafeMathUpgradeable for uint256;
     using SafeMathInt for int256;
     using UInt256Lib for uint256;
 
@@ -242,7 +242,7 @@ contract XUMFragmentsPolicy is Ownable {
         public
         initializer
     {
-        Ownable.initialize(owner_);
+        OwnableUpgradeable.initialize(owner_);
 
         // deviationThreshold = 0.05e18 = 5e16
         deviationThreshold = 5 * 10 ** (DECIMALS-2);

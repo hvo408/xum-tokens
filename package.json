@@ -31,18 +31,19 @@
     ]
   },
   "dependencies": {
+    "@openzeppelin/contracts-upgradeable": "3.3.0",
     "app-root-path": "2.1.0",
     "bignumber.js": "9.0.1",
     "frg-ethereum-runners": "https://github.com/ampleforth/frg-ethereum-runners.git#v1.0.0-alpha",
     "js-yaml": "^3.13.1",
-    "openzeppelin-eth": "2.2.0",
     "truffle": "5.1.60"
   },
   "devDependencies": {
-    "@openzeppelin/test-environment": "^0.1.2",
-    "@openzeppelin/test-helpers": "^0.5.4",
+    "@openzeppelin/test-environment": "0.1.9",
+    "@openzeppelin/test-helpers": "0.5.10",
+    "@openzeppelin/upgrades": "2.8.0",
     "chai": "^4.1.2",
-    "chai-bignumber": "^2.0.2",
+    "chai-bignumber": "3.0.0",
     "coveralls": "^3.0.2",
     "eslint": "^4.19.1",
     "eslint-config-google": "^0.9.1",
@@ -61,6 +62,6 @@
     "solhint": "^1.1.10",
     "solidity-coverage": "0.7.13",
     "stochasm": "^0.5.0",
-    "zos-lib": "^2.2.2"
+    "zos-lib": "2.4.3"
   }
 }

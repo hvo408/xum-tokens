@@ -1,6 +1,6 @@
-pragma solidity 0.5.3;
+pragma solidity ^0.6.0;
 
-import "openzeppelin-eth/contracts/ownership/Ownable.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 import "./XUMFragmentsPolicy.sol";
 
@@ -10,7 +10,7 @@ import "./XUMFragmentsPolicy.sol";
  * @notice The orchestrator is the main entry point for rebase operations. It coordinates the policy
  * actions with external consumers.
  */
-contract Orchestrator is Ownable {
+contract Orchestrator is OwnableUpgradeable {
 
     struct Transaction {
         bool enabled;
@@ -29,7 +29,7 @@ contract Orchestrator is Ownable {
      * @param policy_ Address of the XUMFragments policy.
      */
     constructor(address policy_) public {
-        Ownable.initialize(msg.sender);
+        OwnableUpgradeable.initialize(msg.sender);
         policy = XUMFragmentsPolicy(policy_);
     }
 
@@ -141,7 +141,7 @@ contract Orchestrator is Ownable {
                 // It includes callGas (700) + callVeryLow (3, to pay for SUB)
                 // + callValueTransferGas (9000) + callNewAccountGas
                 // (25000, in case the destination address does not exist and needs creating)
-                sub(gas, 34710),
+                sub(gas(), 34710),
 
 
                 destination,
